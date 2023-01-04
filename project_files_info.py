@@ -24,7 +24,8 @@ def directory_transversal(path):
     if addition_files != 0:
         global files
         for addition_file in addition_files:
-            if addition_file.endswith('.cs') or addition_file.endswith('.axaml'):
+            # if addition_file.endswith('.cs') or addition_file.endswith('.axaml'): # avalonia + cs
+            if addition_file.endswith('.java') or addition_file.endswith('.ftl') or addition_file.endswith('.ftlh'): # java + freemarker
                 files.append([addition_file, sum(1 for _ in open(path + '/' + addition_file)),
                               math.ceil(os.path.getsize(path + '/' + addition_file) / 1024)])
     directories = [directory.name for directory in directory.iterdir() if directory.is_dir()

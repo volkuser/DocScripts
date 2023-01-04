@@ -2,7 +2,7 @@ import pathlib
 from odf.opendocument import OpenDocumentText
 from odf.style import Style, TextProperties, ParagraphProperties
 from odf import teletype
-from odf.text import H
+from odf.text import P
 
 print('enter the path to project:', end=' ')
 main_path = input()
@@ -18,7 +18,8 @@ def directory_transversal(path):
     if addition_files != 0:
         global files
         for addition_file in addition_files:
-            if addition_file.endswith('.cs') or addition_file.endswith('.axaml'):
+            # if addition_file.endswith('.cs') or addition_file.endswith('.axaml'): # avalonia + cs
+            if addition_file.endswith('.java') or addition_file.endswith('.ftl') or addition_file.endswith('.ftlh'): #
                 files.append([addition_file, path + '/' + addition_file])
     directories = [directory.name for directory in directory.iterdir() if directory.is_dir()
                    and not directory.name.startswith(".")]
@@ -37,11 +38,11 @@ code_style.addElement(TextProperties(attributes={"fontsize": "12pt", "fontfamily
 styles.addElement(code_style)
 
 for file_name, file_path in files:
-    header_element = H(outlinelevel=1, stylename='Default Paragraph Style')
+    header_element = P(stylename='Основное')
     header_text = file_name
     teletype.addTextToElement(header_element, header_text)
     doc.text.addElement(header_element)
-    content_element = H(outlinelevel=1, stylename='Code Style')
+    content_element = P(stylename='Code Style')
     with open(file_path, 'r', encoding='utf-8') as file:
         content_text = file.read() + '\n'
         teletype.addTextToElement(content_element, content_text)
