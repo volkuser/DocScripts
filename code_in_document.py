@@ -18,8 +18,9 @@ def directory_transversal(path):
     if addition_files != 0:
         global files
         for addition_file in addition_files:
-            # if addition_file.endswith('.cs') or addition_file.endswith('.axaml'): # avalonia + cs
-            if addition_file.endswith('.java') or addition_file.endswith('.ftl') or addition_file.endswith('.ftlh'): #
+            if addition_file.endswith('.cs') or addition_file.endswith('.xaml'):  # wpf + cs
+                # if addition_file.endswith('.cs') or addition_file.endswith('.axaml'): # avalonia + cs
+                # if addition_file.endswith('.java') or addition_file.endswith('.ftl') or addition_file.endswith('.ftlh'): #
                 files.append([addition_file, path + '/' + addition_file])
     directories = [directory.name for directory in directory.iterdir() if directory.is_dir()
                    and not directory.name.startswith(".")]
@@ -34,7 +35,7 @@ doc = OpenDocumentText()
 styles = doc.styles
 code_style = Style(name="Code Style", family="paragraph")
 code_style.addElement(ParagraphProperties(attributes={"textalign": "left"}))
-code_style.addElement(TextProperties(attributes={"fontsize": "12pt", "fontfamily": "Liberation Serif"}))
+code_style.addElement(TextProperties(attributes={"fontsize": "12pt", "fontfamily": "Times New Roman"}))
 styles.addElement(code_style)
 
 for file_name, file_path in files:
