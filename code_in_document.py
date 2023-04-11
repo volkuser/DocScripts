@@ -18,7 +18,9 @@ def directory_transversal(path):
     if addition_files != 0:
         global files
         for addition_file in addition_files:
-            if addition_file.endswith('.cs') or addition_file.endswith('.xaml'):  # wpf + cs
+            if addition_file.endswith('.java') or addition_file.endswith('.xml'): # android (xml + java)
+            # if addition_file.endswith('.java'): # only java
+            # if addition_file.endswith('.cs') or addition_file.endswith('.xaml'):  # wpf + cs
                 # if addition_file.endswith('.cs') or addition_file.endswith('.axaml'): # avalonia + cs
                 # if addition_file.endswith('.java') or addition_file.endswith('.ftl') or addition_file.endswith('.ftlh'): #
                 files.append([addition_file, path + '/' + addition_file])
